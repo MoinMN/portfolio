@@ -23,7 +23,7 @@ export const Login = async (req, res) => {
     res.cookie('token', token, {
       httpOnly: true,     // Prevent access from JavaScript
       secure: true,       // Use this flag when using HTTPS
-      sameSite: 'Strict'  // CSRF protection
+      sameSite: 'None'  // CSRF protection
     });
 
     return res.status(200).json({ user: user, message: "Logged In Successfully!" });
@@ -53,7 +53,7 @@ export const Logout = async (req, res) => {
     res.clearCookie('token', {
       httpOnly: true,    // Matches the same settings used during login
       secure: true,      // Ensure the flag is consistent with login settings
-      sameSite: 'Strict' // Matches the same settings used during login
+      sameSite: 'None' // Matches the same settings used during login
     });
 
     return res.status(200).json({ message: "Logged out successfully!" });
