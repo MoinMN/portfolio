@@ -17,6 +17,7 @@ This is a **dynamic portfolio website** built using the **MERN Stack (MongoDB, E
 - **Contact Page** - Users can send a message, and the developer will receive an email notification.
 - **Client Testimonials** - Display client feedback dynamically.
 - **Submit Testimonial** - A secure route (`/post-testimonial`) where clients can submit testimonials **only if authorized**.
+- **3D PC Model** - A **realistic PC model rendered using Three.js**.
 
 ### 🔹 **Admin Features** (`/admin`)
 
@@ -43,7 +44,9 @@ This is a **dynamic portfolio website** built using the **MERN Stack (MongoDB, E
 
 - React.js (Vite)
 - Tailwind CSS
+- ShadCN UI Components (Modern UI)
 - Framer Motion (Animations)
+- Three.js (3D Model Rendering)
 - React Router DOM
 - React Icons & FontAwesome
 - Axios
@@ -60,7 +63,7 @@ This is a **dynamic portfolio website** built using the **MERN Stack (MongoDB, E
 
 ---
 
-## 📁 Project Structure
+## 💽 Project Structure
 
 ### 🔹 **Backend Folder Structure**
 
@@ -70,7 +73,7 @@ backend/
 ├── routes/       # API Routes
 ├── controllers/  # Business Logic
 ├── middleware/   # Authentication & Security
-├── template      # For Email HRML Templates
+├── template      # For Email HTML Templates
 ├── config/       # Database & Environment Configs
 ├── utils/        # Helper Functions
 ├── .env          # Environment Variables
@@ -91,7 +94,7 @@ frontend/
 │   ├── App.jsx          # Main App Component
 │   ├── index.js         # Entry Point
 │   ├── styles/          # Tailwind Styles
-│   └── router/          # React Router Setup
+│   ├── router/          # React Router Setup
 └── .env                 # Environment Variables
 ```
 
@@ -176,6 +179,7 @@ npm run dev
 - **JWT Authentication**: Protects API routes.
 - **CORS Handling**: Secure backend API requests.
 - **Cloudinary Integration**: Secure image storage.
+- **ShadCN UI Components**: Improved UI security and performance.
 
 ---
 
@@ -185,7 +189,6 @@ Feel free to open issues or contribute by creating a pull request. Your feedback
 
 ### **Developer Contact**
 
-📧 Email: moinnaik98@gmail.com
+💎 Email: moinnaik98@gmail.com
 
-⭐ If you like this project, don't forget to give it a star on GitHub!
-
+💛 If you like this project, don't forget to give it a star on GitHub! ⭐

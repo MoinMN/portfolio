@@ -1,5 +1,4 @@
-const BASE_URL = 'http://localhost:4518';
-// BASE_URL = 'http://localhost:4518'
+const BASE_URL = 'https://portfolio-api.vercel.app';
 
 
 
