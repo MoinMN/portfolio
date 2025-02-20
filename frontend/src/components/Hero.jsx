@@ -49,21 +49,21 @@ const Hero = ({ iam }) => {
               />
               <span className='text-2xl md:text-3xl lg:text-4xl montserrat'>Hello, I'm</span>
               <div className='text-5xl md:text-6xl lg:text-7xl montserrat-alternates-semibold flex gap-2 flex-wrap'>
-                <motion.span
+                <motion.h1
                   className='text-blue-600'
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
                 >
                   Moin
-                </motion.span>
-                <motion.span
+                </motion.h1>
+                <motion.h1
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.3, duration: 0.6, ease: "easeOut" }}
                 >
                   Naik!
-                </motion.span>
+                </motion.h1>
               </div>
             </motion.div>
 
