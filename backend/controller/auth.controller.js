@@ -40,9 +40,30 @@ export const Verify = async (req, res) => {
     if (!token) return res.status(401).json({ isAuthenticated: false, message: "Token Not Found!" });
 
     const user = jwt.verify(token, process.env.JWT_SECRET_KEY);
+
+    if (!user) {
+      res.clearCookie("token", {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+      });
+      return res.status(401).json({ isAuthenticated: false, message: "Token Expired or Invalid, Unauthorized Access!" });
+    }
+
     return res.status(200).json({ isAuthenticated: true, user: user });
   } catch (error) {
+    // Check if the error is due to an expired token
+    if (error.name === "TokenExpiredError" || error.name === "JsonWebTokenError") {
+      res.clearCookie("token", {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+      });
+      return res.status(401).json({ isAuthenticated: false, message: "Session Expired. Please log in again." });
+    }
+
     console.log(`Error while verifing user\nError => `, error.message);
+
     return res.status(500).json({ isAuthenticated: false, message: "Internal Server Error!", error: error.message });
   }
 }
