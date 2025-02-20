@@ -94,6 +94,9 @@ const Project = () => {
           setShowAlert(true);
           setModalToPost(false);
           setIsSubmitting(false);
+
+          // fetch projects
+          fetchProjects();
         })
     } else {
       // update project
@@ -110,6 +113,9 @@ const Project = () => {
           setShowAlert(true);
           setModalToPost(false);
           setIsSubmitting(false);
+
+          // fetch projects
+          fetchProjects();
         });
     }
 
@@ -141,6 +147,9 @@ const Project = () => {
       .finally(() => {
         closeModal(); // ensure modal closes
         setShowAlert(true);
+
+        // fetch projects
+        fetchProjects();
       })
   }
 
@@ -211,7 +220,7 @@ const Project = () => {
   // Warn user if they try to navigate away
   useUnsavedChangesWarning(isDirty);
 
-  useEffect(() => {
+  const fetchProjects = () => {
     GetProject()
       .then(res => {
         setProjectsList(res);
@@ -220,7 +229,11 @@ const Project = () => {
         console.log(err.message);
       })
       .finally(() => setIsLoading(false))
-  }, [handleConfirmSubmit, handleConfirmDelete]);
+  }
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
 
   // shift forward
   const next = (currentIndex) => {
@@ -314,6 +327,7 @@ const Project = () => {
               {/* img if any */}
               <img
                 src={project.image}
+                loading='lazy'
                 alt="Project Image Here"
                 className='rounded-lg border-2 border-light-primary w-full max-h-52 object-cover'
               />

@@ -97,6 +97,9 @@ const Service = () => {
           setShowAlert(true);
           setServiceDataToUpdate({});
           setIsSubmitting(false);
+
+          // fetch skills
+          fetchServices();
         })
     } else {
       AddService(serviceDataToUpdate)
@@ -112,6 +115,9 @@ const Service = () => {
           setShowAlert(true);
           setServiceDataToUpdate({});
           setIsSubmitting(false);
+
+          // fetch skills
+          fetchServices();
         })
     }
     setIndexForEdit(null);
@@ -155,6 +161,9 @@ const Service = () => {
         closeModal();
         // ensure three dot close on click of edit
         setIsThreeDotOpen(false);
+
+        // fetch services
+        fetchServices();
       })
   }
 
@@ -191,17 +200,20 @@ const Service = () => {
   // Warn user if they try to navigate away
   useUnsavedChangesWarning(isDirty);
 
-
-  useEffect(() => {
+  const fetchServices = () => {
     GetServices()
       .then(res => {
-        setSericesList(res);
+        setSericesList((prev) => res);
       })
       .catch(err => {
         console.log(err.message);
       })
       .finally(() => setIsLoading(false))
-  }, [indexForEdit, handleDelete]);
+  }
+
+  useEffect(() => {
+    fetchServices();
+  }, [indexForEdit]);
 
   // shift forward
   const next = (currentIndex) => {

@@ -117,6 +117,9 @@ const Skill = () => {
           // update to empty object as its job is over
           setSkillData({});
           setIsSubmitting(false);
+
+          // fetch skills
+          fetchSkills();
         })
     } else {
       AddSkill(skillData)
@@ -133,6 +136,9 @@ const Skill = () => {
           // update to empty object as its job is over
           setSkillData({});
           setIsSubmitting(false);
+
+          // fetch skills
+          fetchSkills();
         })
     }
     setIndexForEdit(null);
@@ -168,6 +174,9 @@ const Skill = () => {
       .finally(() => {
         setShowAlert(true);
         closeModal();
+
+        // fetch skills
+        fetchSkills();
       })
   }
 
@@ -205,8 +214,7 @@ const Skill = () => {
   // Warn user if they try to navigate away
   useUnsavedChangesWarning(isDirty);
 
-
-  useEffect(() => {
+  const fetchSkills = () => {
     GetSkill()
       .then(res => {
         setSkillsList(res);
@@ -217,7 +225,11 @@ const Skill = () => {
         setShowAlert(true);
       })
       .finally(() => setIsLoading(false))
-  }, [indexForEdit, handleConfirmSubmit, handleConfirmDelete]);
+  }
+
+  useEffect(() => {
+    fetchSkills();
+  }, [indexForEdit]);
 
   // shift forward
   const next = (currentIndex) => {
