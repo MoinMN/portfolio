@@ -14,6 +14,7 @@ import { GetProject } from '@/api/project.api';
 import { GetSkill } from '@/api/skill.api';
 import { GetServices } from '@/api/service.api';
 import { GetApprovedTestimonial } from '@/api/clienttestimonial.api';
+import SEO from '@/components/SEO';
 
 const MainPage = () => {
   // for tracking loading
@@ -103,6 +104,14 @@ const MainPage = () => {
 
   return (
     <>
+
+      <SEO
+        title="Moin MN | Profolio | MERN Stack Developer"
+        description="Discover my expertise in MERN Stack, Next.js, and full-stack web development. I specialize in building scalable, high-performance applications, delivering innovative solutions, and crafting seamless user experiences. Explore my projects, services, and technical skills."
+        url="https://www.moinnaik.com/"
+      />
+
+
       {isLoading ? (
         <Loading setIsLoading={setIsLoading} dataLoaded={dataLoaded} />
       ) : (
