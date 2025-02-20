@@ -10,7 +10,7 @@ import axios from 'axios';
 import Alert from '../components/Alert';
 import { AuthUser } from '../api/auth.api';
 import BASE_URL from '../config/BackendURL';
-import Loading from '../components/Loading';
+import Loading from '../components/admin/Loading';
 import BackgroundVideo from '../assets/bg-admin.mp4';
 
 const Login = () => {

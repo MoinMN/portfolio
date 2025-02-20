@@ -3,7 +3,7 @@ import React from "react";
 
 const Loader = () => {
   return (
-    <div className="flex items-center justify-center min-h-[50vh]">
+    <div className="flex items-center justify-center min-h-screen">
       <div className="flex space-x-2">
         {[0, 1, 2].map((index) => (
           <motion.span

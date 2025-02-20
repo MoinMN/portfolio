@@ -52,7 +52,7 @@ const Loading = ({ setIsLoading, dataLoaded }) => {
   }, [dataLoaded, hasCompletedOneCycle, canExit, setIsLoading]);
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black">
+    <div className="fixed inset-0 flex items-center justify-center bg-black z-[1000]">
       <div className="relative h-screen w-screen overflow-hidden">
         <motion.div
           id="loading-slider"
