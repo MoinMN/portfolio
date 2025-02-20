@@ -1,12 +1,12 @@
-import React, { useEffect, useState, lazy, Suspense } from 'react';
+import React, { useEffect, useState } from 'react';
 import Loading from '@/components/admin/Loading';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-const About = lazy(() => import('@/components/About'));
-const Project = lazy(() => import('@/components/Project'));
-const Skill = lazy(() => import('@/components/Skill'));
-const Service = lazy(() => import('@/components/Service'));
-// const Testimonial = lazy(() => import('@/components/Testimonial'));
+import About from '@/components/About';
+import Project from '@/components/Project';
+import Skill from '@/components/Skill';
+import Service from '@/components/Service';
+// import Testimonial from '@/components/Testimonial';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import { GetAboutMe } from '@/api/aboutme.api';
@@ -71,13 +71,11 @@ const MainPage = () => {
     <>
       <Navbar activeSection={activeSection} />
       <Hero iam={data.about?.tagLineSkills} />
-      <Suspense fallback={<Loading />}>
-        <About aboutMe={data.about?.aboutMeContent} />
-        <Project projects={data.projects} />
-        <Skill skills={data.skills} />
-        <Service services={data.services} />
-        {/* <Testimonial testimonials={data.testimonials} /> */}
-      </Suspense>
+      <About aboutMe={data.about?.aboutMeContent} />
+      <Project projects={data.projects} />
+      <Skill skills={data.skills} />
+      <Service services={data.services} />
+      {/* <Testimonial testimonials={data.testimonials} /> */}
       <Contact />
       <Footer />
     </>
