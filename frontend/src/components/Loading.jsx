@@ -47,12 +47,12 @@ const Loading = ({ setIsLoading, dataLoaded }) => {
   // Hide loader when all conditions are met
   useEffect(() => {
     if (dataLoaded && hasCompletedOneCycle && canExit) {
-      setTimeout(() => setIsLoading(false), 150);
+      setTimeout(() => setIsLoading(false));
     }
   }, [dataLoaded, hasCompletedOneCycle, canExit, setIsLoading]);
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black z-[1000]">
+    <div className="fixed inset-0 flex items-center justify-center bg-black">
       <div className="relative h-screen w-screen overflow-hidden">
         <motion.div
           id="loading-slider"

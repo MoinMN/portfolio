@@ -18,7 +18,6 @@ import { GetServices } from '@/api/service.api';
 const MainPage = () => {
   // for tracking loading
   const [isLoading, setIsLoading] = useState(true);
-  const [dataLoaded, setDataLoaded] = useState(false);
 
   // Store all data in a single state object
   const [data, setData] = useState({
@@ -44,66 +43,6 @@ const MainPage = () => {
       .finally(() => setIsLoading(false));
   }, []);
 
-  // // for about 
-  // const [about, setAbout] = useState({});
-  // const fetchAbout = () => {
-  //   GetAboutMe()
-  //     .then((res) => {
-  //       if (res) setAbout(res)
-  //     })
-  //     .catch((err) => console.log(err))
-  //     .finally(() => fetchProject());
-  // }
-
-  // // for project
-  // const [projects, setProjects] = useState([]);
-  // const fetchProject = () => {
-  //   GetProject()
-  //     .then((res) => {
-  //       if (res) setProjects(res)
-  //     })
-  //     .catch((err) => console.log(err))
-  //     .finally(() => fetchSkill());
-  // }
-
-  // // for skill
-  // const [skills, setSkills] = useState([]);
-  // const fetchSkill = () => {
-  //   GetSkill()
-  //     .then((res) => {
-  //       if (res) setSkills(res)
-  //     })
-  //     .catch((err) => console.log(err))
-  //     .finally(() => fetchService())
-  // }
-
-  // // for Service
-  // const [services, setServices] = useState([]);
-  // const fetchService = () => {
-  //   GetServices()
-  //     .then((res) => {
-  //       if (res) setServices(res)
-  //     })
-  //     .catch((err) => console.log(err))
-  //     .finally(() => setDataLoaded(true));      // finally all loaded
-  // }
-
-  // // for testinmonail
-  // const [testimonials, setTestimonials] = useState([]);
-  // const fetchTestimonial = () => {
-  //   GetApprovedTestimonial()
-  //     .then((res) => {
-  //       if (res?.testimonials) setTestimonials(res.testimonials);
-  //     })
-  //     .catch((err) => console.log(err))
-  //     .finally(() => setIsLoading(false))
-  // }
-
-  // useEffect(() => {
-  //   fetchAbout();
-  // }, []);
-
-
   // for navbar
   const [activeSection, setActiveSection] = useState("");
 
@@ -125,25 +64,22 @@ const MainPage = () => {
     return () => observer.disconnect();
   }, [isLoading]);
 
+  // loading
+  if (isLoading) return <Loading />
+
   return (
     <>
-      {isLoading ? (
-        <Loading setIsLoading={setIsLoading} dataLoaded={dataLoaded} />
-      ) : (
-        <>
-          <Navbar activeSection={activeSection} />
-          <Hero iam={data.about?.tagLineSkills} />
-          <Suspense fallback={<Loading />}>
-            <About aboutMe={data.about?.aboutMeContent} />
-            <Project projects={data.projects} />
-            <Skill skills={data.skills} />
-            <Service services={data.services} />
-            {/* <Testimonial testimonials={data.testimonials} /> */}
-          </Suspense>
-          <Contact />
-          <Footer />
-        </>
-      )}
+      <Navbar activeSection={activeSection} />
+      <Hero iam={data.about?.tagLineSkills} />
+      <Suspense fallback={<Loading />}>
+        <About aboutMe={data.about?.aboutMeContent} />
+        <Project projects={data.projects} />
+        <Skill skills={data.skills} />
+        <Service services={data.services} />
+        {/* <Testimonial testimonials={data.testimonials} /> */}
+      </Suspense>
+      <Contact />
+      <Footer />
     </>
   )
 }
