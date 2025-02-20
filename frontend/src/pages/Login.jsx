@@ -29,7 +29,7 @@ const Login = () => {
   useEffect(() => {
     AuthUser()
       .then(res => {
-        if (res.isAuthenticated) return navigate('/dashboard');
+        if (res.isAuthenticated) return navigate('/admin/dashboard');
       })
       .finally(() => {
         setIsLoading(false);
