@@ -44,6 +44,8 @@ const Contact = () => {
       .then(res => {
         setMessageAlert(res?.message);
         setVariantAlert("warning")
+        // Remove the deleted contact from the state
+        setContacts(prev => prev.filter(contact => contact._id !== _id));
       })
       .catch(err => {
         setMessageAlert(err?.message);
@@ -56,6 +58,8 @@ const Contact = () => {
   }
 
   useEffect(() => {
+    setIsLoading(true);
+
     Get()
       .then(res => {
         setContacts(res);
@@ -66,7 +70,7 @@ const Contact = () => {
         setShowAlert(true);
       })
       .finally(() => setIsLoading(false))
-  }, [handleConfirmDelete]);
+  }, []);
 
   if (isLoading) return <Loading />
 

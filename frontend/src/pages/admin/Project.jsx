@@ -220,7 +220,7 @@ const Project = () => {
         console.log(err.message);
       })
       .finally(() => setIsLoading(false))
-  }, [handleConfirmSubmit, handleDelete]);
+  }, [handleConfirmSubmit, handleConfirmDelete]);
 
   // shift forward
   const next = (currentIndex) => {
