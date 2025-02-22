@@ -9,7 +9,7 @@ const Service = ({ services }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="md:scroll-mt-8 md:py-12 max-md:py-6"
+      className="md:scroll-mt-8 md:pb-12 max-md:py-6"
       id="service"
     >
       <motion.h3
