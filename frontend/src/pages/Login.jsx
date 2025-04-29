@@ -4,7 +4,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import Alert from '../components/Alert';
@@ -15,6 +15,7 @@ import BackgroundVideo from '../assets/bg-admin.mp4';
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [isEyeOpen, setIsEyeOpen] = useState(false);
 
@@ -61,7 +62,14 @@ const Login = () => {
       if (response.status === 200) {
         setMessageAlert(response.data.message);
         setVariantAlert('success');
-        navigate('/admin/dashboard');
+        const params = new URLSearchParams(location.search);
+        const redirectPath = params.get('redirect');
+
+        if (redirectPath) {
+          navigate(redirectPath);
+        } else {
+          navigate('/admin/dashboard');
+        }
       }
     } catch (error) {
       console.log(`Error while login\nError => `, error);

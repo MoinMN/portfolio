@@ -72,6 +72,24 @@ const Contact = () => {
       .finally(() => setIsLoading(false))
   }, []);
 
+  function formatDate(isoString) {
+    if (!isoString) return "";
+
+    const date = new Date(isoString);
+    if (isNaN(date)) return "";
+
+    const pad = (num) => String(num).padStart(2, "0");
+
+    const day = pad(date.getDate());
+    const month = pad(date.getMonth() + 1); // Months are 0-based
+    const year = date.getFullYear();
+
+    const hours = pad(date.getHours());
+    const minutes = pad(date.getMinutes());
+
+    return `${day}/${month}/${year} ${hours}:${minutes}`;
+  }
+
   if (isLoading) return <Loading />
 
   return (
@@ -85,20 +103,23 @@ const Contact = () => {
                   <th className="px-2 py-1 sm:px-4 sm:py-2 border-b font-semibold" style={{ width: "2%" }}>
                     #
                   </th>
-                  <th className="px-2 py-1 sm:px-4 sm:py-2 border-b font-semibold" style={{ width: "6%" }}>
+                  <th className="px-2 py-1 sm:px-4 sm:py-2 border-b font-semibold" style={{ width: "7%" }}>
                     Name
                   </th>
-                  <th className="px-2 py-1 sm:px-4 sm:py-2 border-b font-semibold" style={{ width: "9%" }}>
+                  <th className="px-2 py-1 sm:px-4 sm:py-2 border-b font-semibold" style={{ width: "6%" }}>
                     Email
                   </th>
-                  <th className="px-2 py-1 sm:px-4 sm:py-2 border-b font-semibold" style={{ width: "8%" }}>
+                  <th className="px-2 py-1 sm:px-4 sm:py-2 border-b font-semibold" style={{ width: "6%" }}>
                     Number
                   </th>
-                  <th className="px-2 py-1 sm:px-4 sm:py-2 border-b font-semibold" style={{ width: "11%" }}>
+                  <th className="px-2 py-1 sm:px-4 sm:py-2 border-b font-semibold" style={{ width: "9%" }}>
                     Subject
                   </th>
-                  <th className="px-2 py-1 sm:px-4 sm:py-2 border-b font-semibold" style={{ width: "12%" }}>
+                  <th className="px-2 py-1 sm:px-4 sm:py-2 border-b font-semibold" style={{ width: "11%" }}>
                     Content
+                  </th>
+                  <th className="px-2 py-1 sm:px-4 sm:py-2 border-b font-semibold" style={{ width: "7%" }}>
+                    Date
                   </th>
                   <th className="px-2 py-1 sm:px-4 sm:py-2 border-b font-semibold" style={{ width: "3%" }}>
                     Action
@@ -116,10 +137,17 @@ const Contact = () => {
                       </Link>
                     </td>
                     <td className="px-2 py-1 sm:px-4 sm:py-2 overflow-hidden text-ellipsis">
-                      {cont?.number ? cont.number : "-"}
+                      {cont?.number
+                        ?
+                        <Link to={"tel:+91" + cont?.number}>
+                          {cont?.number}
+                        </Link>
+                        : "-"
+                      }
                     </td>
                     <td className="px-2 py-1 sm:px-4 sm:py-2 overflow-hidden text-ellipsis">{cont?.subject}</td>
                     <td className="px-2 py-1 sm:px-4 sm:py-2 overflow-hidden text-ellipsis">{cont?.message}</td>
+                    <td className="px-2 py-1 sm:px-4 sm:py-2 overflow-hidden text-ellipsis">{formatDate(cont?.createdAt)}</td>
                     <td className="px-2 py-1 sm:px-4 sm:py-2">
                       <i
                         className='fa-solid fa-trash-can cursor-pointer text-xl md:text-2xl hover:text-red-500 transition-all duration-200 ease-in-out'

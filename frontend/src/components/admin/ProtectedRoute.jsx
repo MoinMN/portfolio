@@ -1,23 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import PageNotFound from '../PageNotFound';
 import { AuthUser } from '../../api/auth.api';
 import Loading from '../Loading';
 
 const ProtectedRoute = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const checkAuthentication = async () => {
     try {
       const res = await AuthUser();
-      setIsAuthenticated(res.isAuthenticated);
+      if (res.isAuthenticated) {
+        setIsAuthenticated(true);
+      } else {
+        setIsAuthenticated(false);
 
-      if (res.navigate) {
-        return <PageNotFound />
+        if (location.pathname.includes('/admin')) {
+          const redirectPath = encodeURIComponent(location.pathname + location.search);
+          navigate(`/admin?redirect=${redirectPath}`);
+        }
       }
     } catch (err) {
-      setIsAuthenticated(err.isAuthenticated);
-      return <PageNotFound />
+      setIsAuthenticated(false);
+      if (location.pathname.includes('/admin')) {
+        const redirectPath = encodeURIComponent(location.pathname + location.search);
+        navigate(`/admin?redirect=${redirectPath}`);
+      }
     }
   };
 
@@ -29,15 +39,11 @@ const ProtectedRoute = () => {
     return <Loading />
   }
 
-  if (isAuthenticated === false) {
+  if (isAuthenticated === false && !location.pathname.includes('/admin')) {
     return <PageNotFound />;
   }
 
-  return (
-    <>
-      <Outlet />
-    </>
-  )
+  return <Outlet />;
 }
 
 export default ProtectedRoute
