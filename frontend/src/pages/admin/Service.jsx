@@ -211,19 +211,21 @@ const Service = () => {
       .finally(() => setIsLoading(false))
   }
 
-  useEffect(() => {
-    fetchServices();
-  }, [indexForEdit]);
-
   // shift forward
-  const next = (currentIndex) => {
-    ChangeSequence(currentIndex, "next");
+  const next = async (currentIndex) => {
+    await ChangeSequence(currentIndex, "next");
+    fetchServices();
   }
 
   // shift backward
-  const previous = (currentIndex) => {
-    ChangeSequence(currentIndex, "previous");
+  const previous = async (currentIndex) => {
+    await ChangeSequence(currentIndex, "previous");
+    fetchServices();
   }
+
+  useEffect(() => {
+    fetchServices();
+  }, [indexForEdit]);
 
   if (isLoading) return <Loading />
 

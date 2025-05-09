@@ -236,13 +236,15 @@ const Project = () => {
   }, []);
 
   // shift forward
-  const next = (currentIndex) => {
-    ChangeSequence(currentIndex, "next");
+  const next = async (currentIndex) => {
+    await ChangeSequence(currentIndex, "next");
+    fetchProjects();
   }
 
   // shift backward
-  const previous = (currentIndex) => {
-    ChangeSequence(currentIndex, "previous");
+  const previous = async (currentIndex) => {
+    await ChangeSequence(currentIndex, "previous");
+    fetchProjects();
   }
 
   if (isLoading) return <Loading />

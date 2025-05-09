@@ -232,13 +232,15 @@ const Skill = () => {
   }, [indexForEdit]);
 
   // shift forward
-  const next = (currentIndex) => {
-    ChangeSequence(currentIndex, "next");
+  const next = async (currentIndex) => {
+    await ChangeSequence(currentIndex, "next");
+    fetchSkills();
   }
 
   // shift backward
-  const previous = (currentIndex) => {
-    ChangeSequence(currentIndex, "previous");
+  const previous = async (currentIndex) => {
+    await ChangeSequence(currentIndex, "previous");
+    fetchSkills();
   }
 
   if (isLoading) return <Loading />
