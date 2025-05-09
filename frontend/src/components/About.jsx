@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion';
 import ScrollingText from './ScrollingText';
-import AboutImgSrc from "../assets/about.jpeg";
+import AboutImgSrc from "../assets/about.jpg";
 import ActionButton from './ActionButton';
 
 const About = ({ aboutMe }) => {
@@ -16,7 +16,7 @@ const About = ({ aboutMe }) => {
           <motion.h3
             className="montserrat-alternates-semibold my-4 text-3xl md:text-4xl lg:text-5xl"
             initial={{ opacity: 0, y: -30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }} F
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.8 }}
           >
