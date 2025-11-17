@@ -4,16 +4,16 @@ dotenv.config();
 
 export const transporter = nodemailer.createTransport({
   // service: "smtp",
-  host: "smtp.titan.email",
+  host: process.env.SMTP_HOST,
   port: 465,
   secure: true,
   auth: {
-    user: process.env.EMAIL_ADDRESS,
-    pass: process.env.EMAIL_PASSCODE,
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
   },
 });
 
 // Set up email data
 export const sender = {
-  from: `"Moin MN" ${process.env.EMAIL_ADDRESS}`, // sender address
+  from: `"Moin MN" ${process.env.SMTP_USER}`, // sender address
 };
