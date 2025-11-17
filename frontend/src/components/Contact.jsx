@@ -29,11 +29,12 @@ const Contact = () => {
   const [messageAlert, setMessageAlert] = useState('');
   const [variantAlert, setVariantAlert] = useState('');
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleDataChange = (e) => setContactData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const { name, email, number, subject, message } = contactData;
 
     if (!name || !email || !subject || !message) {
@@ -61,6 +62,8 @@ const Contact = () => {
       return;
     }
 
+    setIsSubmitting(true);
+
     Add(contactData)
       .then((res) => {
         setMessageAlert(res.message);
@@ -71,6 +74,7 @@ const Contact = () => {
       }).finally(() => {
         setShowAlert(true);
         setContactData({ name: "", email: "", number: "", subject: "", message: "" });
+        setIsSubmitting(false);
       });
   };
 
@@ -174,7 +178,18 @@ const Contact = () => {
                   )}
                 </motion.div>
               ))}
-              <Button type="submit" className="bg-blue-600 hover:bg-blue-500 text-white py-2">Send Message</Button>
+
+              <Button
+                type="submit"
+                className="bg-blue-600 hover:bg-blue-500 text-white py-2 flex items-center justify-center"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  <div className="h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                ) : (
+                  "Send Message"
+                )}
+              </Button>
             </form>
           </motion.div>
         </div>
