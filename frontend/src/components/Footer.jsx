@@ -15,7 +15,7 @@ const Footer = () => {
         <span
           className="mt-2 transition-all duration-300 cursor-pointer relative inline-block"
         >
-          Version: 25.5.9
+          Version: 25.12.17
         </span>
       </div>
     </footer>

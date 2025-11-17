@@ -33,8 +33,29 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!contactData.name || !contactData.email || !contactData.subject || !contactData.message) {
+
+    const { name, email, number, subject, message } = contactData;
+
+    if (!name || !email || !subject || !message) {
       setMessageAlert('Mandatory fields are empty!');
+      setVariantAlert("warning");
+      setShowAlert(true);
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setMessageAlert("Please enter a valid email address!");
+      setVariantAlert("warning");
+      setShowAlert(true);
+      return;
+    }
+
+    // Mobile number validation (10 digits only)
+    const phoneRegex = /^[0-9]{10}$/;
+    if (number && !phoneRegex.test(number)) {
+      setMessageAlert("Please enter a valid 10-digit mobile number!");
       setVariantAlert("warning");
       setShowAlert(true);
       return;
