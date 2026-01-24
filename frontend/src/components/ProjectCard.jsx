@@ -1,7 +1,7 @@
-import React from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import HoverText from "./HoverText";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const ProjectCard = ({ project, index }) => {
   const x = useMotionValue(0);
@@ -95,5 +95,17 @@ const ProjectCard = ({ project, index }) => {
   );
 };
 
+// PropTypes validation
+ProjectCard.propTypes = {
+  project: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string,
+    image: PropTypes.string,
+    githubLink: PropTypes.string,
+    deployedLink: PropTypes.string,
+    technology: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
+  index: PropTypes.number.isRequired,
+};
 
 export default ProjectCard;

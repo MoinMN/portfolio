@@ -1,5 +1,5 @@
-import React from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
+import PropTypes from "prop-types";
 
 const TestimonialCard = ({ testimonial }) => {
   const x = useMotionValue(0);
@@ -55,7 +55,7 @@ const TestimonialCard = ({ testimonial }) => {
               {testimonial.name}
             </h4>
             <p className="text-sm md:text-base text-gray-300 italic">
-              "{testimonial.comment}"
+              {`"${testimonial.comment}"`}
             </p>
           </div>
         </div>
@@ -99,6 +99,24 @@ const Testimonial = ({ testimonials }) => {
       </motion.section>
     </>
   );
+};
+
+TestimonialCard.propTypes = {
+  testimonial: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    profile: PropTypes.string.isRequired, // image URL
+    comment: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+Testimonial.propTypes = {
+  testimonials: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      profile: PropTypes.string.isRequired,
+      comment: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default Testimonial;

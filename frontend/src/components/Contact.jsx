@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -118,15 +118,15 @@ const Contact = () => {
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
             <h4 className="text-xl md:text-2xl font-semibold text-blue-600">
-              Let's Connect!
+              {` Let's Connect!`}
             </h4>
             <p className="mt-4 text-sm md:text-base text-gray-300">
-              Let's bring your ideas to life! Whether it's a{" "}
+              {"Let's bring your ideas to life! Whether it's a "}
               <span className="text-blue-500">project</span>, a{" "}
               <span className="text-blue-500">collaboration</span>, or just a
-              friendly <span className="text-blue-500">hello</span>, I'd love to
+              friendly <span className="text-blue-500">hello</span>, {`I'd love to
               hear from you. Don't hesitate—let's connect and make something
-              awesome happen!
+              awesome happen!`}
             </p>
 
             <div className="flex max-md:gap-0 max-lg:gap-2 max-2xl:gap-3 mt-6 justify-center">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 // import Button from 'react-bootstrap/Button';
 import { SendVerificationCode, UpdateTestimonial, VerifyCode } from '../api/clienttestimonial.api';
 import Alert from '../components/Alert';

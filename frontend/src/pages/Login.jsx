@@ -3,7 +3,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Spinner from 'react-bootstrap/Spinner';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 

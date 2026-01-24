@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Check from 'react-bootstrap/FormCheck';
 import Card from 'react-bootstrap/Card';
 import Table from 'react-bootstrap/Table';

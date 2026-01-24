@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 // about me api
 import { GetAboutMe, UpdateAboutMe } from '../../api/aboutme.api';
 import useUnsavedChangesWarning from '../../utility/useUnsavedChangesWarning';

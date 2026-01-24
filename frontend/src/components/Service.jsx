@@ -1,8 +1,8 @@
-import React from "react";
 import { motion } from "framer-motion";
 import ServiceCard from "./ServiceCard";
+import PropTypes from "prop-types";
 
-const Service = ({ services }) => {
+const Service = ({ services = [] }) => {
   return (
     <motion.section
       initial={{ opacity: 0, y: 40 }}
@@ -54,6 +54,26 @@ const Service = ({ services }) => {
       </motion.div>
     </motion.section>
   );
+};
+
+// Service component PropTypes
+Service.propTypes = {
+  services: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      content: PropTypes.string,
+      icon: PropTypes.string,
+    })
+  ).isRequired,
+};
+
+// ServiceCard component PropTypes
+ServiceCard.propTypes = {
+  service: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string,
+    icon: PropTypes.string,
+  }).isRequired,
 };
 
 export default Service;

@@ -11,7 +11,7 @@ export const AuthUser = async () => {
     } else {
       return { isAuthenticated: false, navigate: true }
     }
-  } catch (error) {
+  } catch {
     // console.log('Error While Verifing Authentication!\nError => ', error);
     return { isAuthenticated: false, navigate: true }
   }

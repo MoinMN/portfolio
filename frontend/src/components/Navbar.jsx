@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import HoverText from './HoverText';
 import { AnimatePresence, motion } from "framer-motion";
+import PropTypes from 'prop-types';
 
-const Navbar = ({ activeSection }) => {
+const Navbar = ({ activeSection = "" }) => {
   const navList = [
     { name: "Home", id: "home" },
     { name: "About", id: "about" },
@@ -129,6 +130,10 @@ const Navbar = ({ activeSection }) => {
       </AnimatePresence>
     </>
   );
+};
+
+Navbar.propTypes = {
+  activeSection: PropTypes.string, // Currently optional, defaults to ""
 };
 
 export default Navbar;

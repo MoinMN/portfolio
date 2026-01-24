@@ -1,5 +1,5 @@
 import { motion, useMotionValue, animate } from "framer-motion";
-import React from "react";
+import PropTypes from "prop-types";
 
 const HoverText = ({ button }) => {
 
@@ -38,6 +38,10 @@ const HoverText = ({ button }) => {
       </motion.span>
     </motion.button>
   );
+};
+
+HoverText.propTypes = {
+  button: PropTypes.string.isRequired,
 };
 
 export default HoverText;

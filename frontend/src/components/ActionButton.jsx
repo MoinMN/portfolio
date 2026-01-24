@@ -1,7 +1,7 @@
-import React from "react";
 import { motion, useMotionValue, animate } from "framer-motion";
+import PropTypes from "prop-types";
 
-const ActionButton = ({ button, action }) => {
+const ActionButton = ({ button }) => {
   const textX = useMotionValue(0);
   const textY = useMotionValue(0);
   const btnX = useMotionValue(0);
@@ -60,6 +60,10 @@ const ActionButton = ({ button, action }) => {
       </motion.span>
     </motion.button >
   );
+};
+
+ActionButton.propTypes = {
+  button: PropTypes.string.isRequired,
 };
 
 export default ActionButton;

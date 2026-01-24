@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef, Suspense } from 'react';
+import { useState, useEffect, useRef, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useGLTF, Html, useProgress } from '@react-three/drei';
 import * as THREE from 'three';
 import { motion } from "framer-motion";
+import PropTypes from 'prop-types';
 
 const LoadingIndicator = () => {
   const { progress } = useProgress();
@@ -19,7 +20,7 @@ const LoadingIndicator = () => {
 };
 
 // Model Component
-function ModelRetrieve({ mouse }) {
+function ModelRetrieve({ mouse = [25, 5, 0] }) {
   const modelRef = useRef();
   const { scene } = useGLTF('/models/gaming_desktop_pc/scene.gltf');
 
@@ -68,6 +69,10 @@ const Model = () => {
       </Suspense>
     </Canvas>
   );
+};
+
+Model.propTypes = {
+  initialCameraPosition: PropTypes.arrayOf(PropTypes.number),
 };
 
 export default Model;

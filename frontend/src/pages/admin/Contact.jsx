@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Get, Delete } from '../../api/contact.api'
 import ModalBox from '../../components/admin/Modal';
 import Alert from '../../components/Alert';

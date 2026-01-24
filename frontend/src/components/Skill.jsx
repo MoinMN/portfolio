@@ -1,32 +1,8 @@
-import React from "react";
 import { motion } from "framer-motion";
 import SkillBox from "./SkillBox";
+import PropTypes from "prop-types";
 
 const Skill = ({ skills }) => {
-  
-  // Skill Row Component with Hover Interaction
-  const SkillRow = ({ skills, direction }) => {
-    return (
-      <div className="relative w-full overflow-hidden flex py-8">
-        <motion.div
-          className="flex space-x-4 md:space-x-8"
-          variants={{
-            animate: {
-              x: direction === "left" ? ["0%", "-35%", "0%"] : ["-35%", "0%", "-35%"],
-              transition: { repeat: Infinity, duration: 20, ease: "linear" },
-            },
-          }}
-          animate="animate"
-          viewport={{ once: true, amount: 0.5 }}
-        >
-          {[...skills, ...skills]?.map((skill, index) => (
-            <SkillBox key={index} skill={skill} />
-          ))}
-        </motion.div>
-      </div>
-    );
-  };
-
   return (
     <section className="md:py-8 max-md:py-6 w-full" id="skill">
       {/* skills overlay in background  */}
@@ -53,6 +29,45 @@ const Skill = ({ skills }) => {
       </div>
     </section>
   );
+};
+
+// Skill Row Component with Hover Interaction
+const SkillRow = ({ skills, direction }) => {
+  return (
+    <div className="relative w-full overflow-hidden flex py-8">
+      <motion.div
+        className="flex space-x-4 md:space-x-8"
+        variants={{
+          animate: {
+            x: direction === "left" ? ["0%", "-35%", "0%"] : ["-35%", "0%", "-35%"],
+            transition: { repeat: Infinity, duration: 20, ease: "linear" },
+          },
+        }}
+        animate="animate"
+        viewport={{ once: true, amount: 0.5 }}
+      >
+        {[...skills, ...skills]?.map((skill, index) => (
+          <SkillBox key={index} skill={skill} />
+        ))}
+      </motion.div>
+    </div>
+  );
+};
+
+// PropTypes validation
+Skill.propTypes = {
+  skills: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      icon: PropTypes.string, // optional, e.g., for SkillBox
+    })
+  ).isRequired,
+};
+
+// Inner SkillRow PropTypes
+SkillRow.propTypes = {
+  skills: PropTypes.array.isRequired,
+  direction: PropTypes.oneOf(["left", "right"]).isRequired,
 };
 
 export default Skill;

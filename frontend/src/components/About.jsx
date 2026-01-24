@@ -1,8 +1,8 @@
-import React from 'react'
 import { motion } from 'framer-motion';
 import ScrollingText from './ScrollingText';
 import AboutImgSrc from "../assets/about.jpg";
 import ActionButton from './ActionButton';
+import PropTypes from 'prop-types';
 
 const About = ({ aboutMe }) => {
   return (
@@ -90,6 +90,10 @@ const About = ({ aboutMe }) => {
       </div>
     </>
   )
-}
+};
+
+About.propTypes = {
+  aboutMe: PropTypes.string.isRequired,
+};
 
 export default About;

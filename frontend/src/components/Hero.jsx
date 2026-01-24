@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Model from '../components/ModelThreeD'
 import { TypeAnimation } from 'react-type-animation';
 import ActionButton from './ActionButton';
 import { motion } from "framer-motion";
+import PropTypes from 'prop-types';
 
-const Hero = ({ iam }) => {
+const Hero = ({ iam = [] }) => {
   const [sequence, setSequence] = useState(["", 1000]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -47,7 +48,7 @@ const Hero = ({ iam }) => {
                 animate={{ x: [0, -10, 0], y: [0, -10, 0] }}
                 transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
               />
-              <span className='text-2xl md:text-3xl lg:text-4xl montserrat'>Hello, I'm</span>
+              <span className='text-2xl md:text-3xl lg:text-4xl montserrat'>{`Hello, I'm`}</span>
               <div className='text-5xl md:text-6xl lg:text-7xl montserrat-alternates-semibold flex gap-2 flex-wrap'>
                 <motion.h1
                   className='text-blue-600'
@@ -146,5 +147,9 @@ const Hero = ({ iam }) => {
     </>
   )
 }
+
+Hero.propTypes = {
+  iam: PropTypes.arrayOf(PropTypes.string), // expects an array of strings for the typing animation
+};
 
 export default Hero

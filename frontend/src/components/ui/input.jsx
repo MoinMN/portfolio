@@ -1,6 +1,7 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
+import PropTypes from "prop-types";
 
 const Input = React.forwardRef(({ className, type, ...props }, ref) => {
   return (
@@ -15,5 +16,16 @@ const Input = React.forwardRef(({ className, type, ...props }, ref) => {
   );
 })
 Input.displayName = "Input"
+
+
+Input.propTypes = {
+  className: PropTypes.string,
+  type: PropTypes.string,
+};
+
+Input.defaultProps = {
+  type: "text", // default to text input
+  className: "",
+};
 
 export { Input }
