@@ -1,8 +1,9 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
+import PropTypes from "prop-types";
 
-const Project = ({ projects }) => {
+const Project = ({ projects = [] }) => {
   const containerRef = useRef(null);
   const [dragLimit, setDragLimit] = useState(0);
 
@@ -45,6 +46,22 @@ const Project = ({ projects }) => {
       </motion.div>
     </section>
   );
+};
+
+// PropTypes validation
+Project.propTypes = {
+  projects: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      content: PropTypes.string,
+      image: PropTypes.string,
+      githubLink: PropTypes.string,
+      deployedLink: PropTypes.string,
+      technology: PropTypes.arrayOf(PropTypes.string),
+      startDate: PropTypes.string,
+      endDate: PropTypes.string,
+    })
+  ),
 };
 
 export default Project;

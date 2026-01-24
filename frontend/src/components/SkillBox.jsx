@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import * as IconsFA from "react-icons/fa";
 import * as IconsFA6 from "react-icons/fa6";
@@ -7,6 +6,7 @@ import * as IconsGr from "react-icons/gr";
 import * as IconsRI from "react-icons/ri";
 import * as IconsDI from "react-icons/di";
 import * as IconsSI from "react-icons/si";
+import PropTypes from 'prop-types';
 
 // fa, fa6, ri, di, si, io5, gr icons imported
 const iconLibraries = {
@@ -76,6 +76,13 @@ const SkillBox = ({ skill }) => {
       <span className="text-lg md:text-xl font-semibold">{skill.name}</span>
     </motion.div>
   );
+};
+
+SkillBox.propTypes = {
+  skill: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired, // e.g., "Fa6.FaReact"
+  }).isRequired,
 };
 
 export default SkillBox;

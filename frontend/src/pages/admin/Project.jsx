@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GetProject, AddProject, UpdateProject, DeleteProject, ChangeSequence } from '../../api/project.api';
 import useUnsavedChangesWarning from '../../utility/useUnsavedChangesWarning';
 import Alert from '../../components/Alert';

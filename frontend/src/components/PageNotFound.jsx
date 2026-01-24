@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import React from "react";
 import Img404 from "../assets/404.png";
 
 const PageNotFound = () => {
@@ -23,7 +22,7 @@ const PageNotFound = () => {
         transition={{ duration: 0.8, delay: 0.3 }}
         className="text-xl text-gray-300 mb-6 text-center"
       >
-        Oops! The page you're looking for doesn't exist.
+        {"Oops! The page you're looking for doesn't exist."}
       </motion.p>
 
       <motion.div

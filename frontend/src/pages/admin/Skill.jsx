@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GetSkill, UpdateSkill, DeleteSkill, AddSkill, ChangeSequence } from '../../api/skill.api.js';
 import useUnsavedChangesWarning from '../../utility/useUnsavedChangesWarning.js';
 import Alert from '../../components/Alert.jsx';

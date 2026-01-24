@@ -1,5 +1,5 @@
-import React from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
+import PropTypes from "prop-types";
 
 const ServiceCard = ({ service }) => {
   const x = useMotionValue(0);
@@ -41,6 +41,15 @@ const ServiceCard = ({ service }) => {
       <p className="text-sm md:text-base text-gray-300">{service.content}</p>
     </motion.div>
   );
+};
+
+// PropTypes validation
+ServiceCard.propTypes = {
+  service: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string, // optional
+    icon: PropTypes.string,    // optional, if you plan to use an icon later
+  }).isRequired,
 };
 
 export default ServiceCard;

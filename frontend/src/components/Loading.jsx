@@ -1,7 +1,8 @@
 import { motion, useAnimation } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 
-const Loading = ({ setIsLoading, dataLoaded }) => {
+const Loading = ({ setIsLoading, dataLoaded = false }) => {
   const controls1 = useAnimation();
   const controls2 = useAnimation();
   const controls3 = useAnimation();
@@ -71,6 +72,11 @@ const Loading = ({ setIsLoading, dataLoaded }) => {
       </div>
     </div>
   );
+};
+
+Loading.propTypes = {
+  setIsLoading: PropTypes.func,  // Function to hide the loader
+  dataLoaded: PropTypes.bool,               // Whether the data has finished loading
 };
 
 export default Loading;

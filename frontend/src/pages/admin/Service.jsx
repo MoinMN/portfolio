@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GetServices, AddService, UpdateService, DeleteService, ChangeSequence } from '../../api/service.api';
 import useUnsavedChangesWarning from '../../utility/useUnsavedChangesWarning';
 import Alert from '../../components/Alert';

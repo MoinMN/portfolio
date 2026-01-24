@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
 import Alert from 'react-bootstrap/Alert';
 import { motion, AnimatePresence } from 'framer-motion';
+import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 
-const AlertBox = ({ showAlert, setShowAlert, message, variant }) => {
+const AlertBox = ({ showAlert, setShowAlert, message, variant = '' }) => {
   useEffect(() => {
     if (showAlert) {
       const timer = setTimeout(() => {
@@ -55,6 +56,14 @@ const AlertBox = ({ showAlert, setShowAlert, message, variant }) => {
       )}
     </AnimatePresence>
   );
+};
+
+// PropTypes validation
+AlertBox.propTypes = {
+  showAlert: PropTypes.bool.isRequired,
+  setShowAlert: PropTypes.func.isRequired,
+  message: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+  variant: PropTypes.oneOf(['', 'success', 'danger', 'warning']),
 };
 
 export default AlertBox;
