@@ -74,22 +74,26 @@ const ProjectCard = ({ project, index }) => {
         transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.3 }}
         viewport={{ once: true, amount: 0.1 }}
       >
-        <Link
-          to={project.githubLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-500 hover:text-blue-600 transition"
-        >
-          <HoverText button={"GitHub ↗"} />
-        </Link>
-        <Link
-          to={project.deployedLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-green-400 hover:text-green-500 transition"
-        >
-          <HoverText button={"Live Demo ↗"} />
-        </Link>
+        {project?.githubLink &&
+          <Link
+            to={project.githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:text-blue-600 transition"
+          >
+            <HoverText button={"GitHub ↗"} />
+          </Link>
+        }
+        {project?.deployedLink &&
+          <Link
+            to={project.deployedLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-green-400 hover:text-green-500 transition"
+          >
+            <HoverText button={"Live Demo ↗"} />
+          </Link>
+        }
       </motion.div>
     </motion.div>
   );
