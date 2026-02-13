@@ -79,19 +79,29 @@ const ProjectCard = ({ project, index }) => {
             to={project.githubLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-500 hover:text-blue-600 transition"
+            className="text-gray-300 hover:text-white transition duration-200"
           >
             <HoverText button={"GitHub ↗"} />
           </Link>
         }
-        {project?.deployedLink &&
+        {project?.appLink &&
           <Link
-            to={project.deployedLink}
+            to={project.appLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-green-400 hover:text-green-500 transition"
+            className="text-violet-400 hover:text-violet-300 transition duration-200"
           >
-            <HoverText button={"Live Demo ↗"} />
+            <HoverText button={"Live App ↗"} />
+          </Link>
+        }
+        {project?.websiteLink &&
+          <Link
+            to={project.websiteLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-cyan-400 hover:text-cyan-300 transition duration-200"
+          >
+            <HoverText button={"Live Website ↗"} />
           </Link>
         }
       </motion.div>
@@ -106,7 +116,8 @@ ProjectCard.propTypes = {
     content: PropTypes.string,
     image: PropTypes.string,
     githubLink: PropTypes.string,
-    deployedLink: PropTypes.string,
+    websiteLink: PropTypes.string,
+    appLink: PropTypes.string,
     technology: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
   index: PropTypes.number.isRequired,

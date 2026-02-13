@@ -357,7 +357,7 @@ const Project = () => {
                 }
               </div>
             </div>
-            <div className="flex justify-around gap-2 text-xs sm:text-sm md:text-base pb-2">
+            <div className="flex justify-around gap-2 text-xs sm:text-sm md:text-base pb-2 mt-auto">
               {project.githubLink &&
                 <>
                   {/* github repo */}
@@ -371,15 +371,28 @@ const Project = () => {
                   </div>
                 </>
               }
-              {project.deployedLink &&
+              {project.websiteLink &&
                 <>
                   {/* deployed link if any */}
                   <div className="cursor-pointer px-2 py-0.5 rounded-md shadow-md text-white bg-light-primary2 hover:bg-light-primary3">
                     <Link
-                      to={project.deployedLink}
+                      to={project.websiteLink}
                       target='_blank'
                     >
-                      Deployed Link
+                      Webiste Link
+                    </Link>
+                  </div>
+                </>
+              }
+              {project.appLink &&
+                <>
+                  {/* deployed link if any */}
+                  <div className="cursor-pointer px-2 py-0.5 rounded-md shadow-md text-white bg-light-primary2 hover:bg-light-primary3">
+                    <Link
+                      to={project.appLink}
+                      target='_blank'
+                    >
+                      App Link
                     </Link>
                   </div>
                 </>
@@ -406,7 +419,7 @@ const Project = () => {
 
 
 
-      {/* Modal from for edit and update data  */}
+      {/* Modal from for edit data  */}
       <ModalForm
         showModalToPost={showModalToPost}
         closeModalToPost={closeModalToPost}
@@ -424,7 +437,7 @@ const Project = () => {
       />
 
       {/* alert  */}
-      < Alert
+      <Alert
         variant={variantAlert}
         showAlert={showAlert}
         message={messageAlert}
@@ -432,7 +445,7 @@ const Project = () => {
       />
 
       {/* Modal Box  */}
-      < ModalBox
+      <ModalBox
         show={showModal}
         close={closeModal}
         title={modalInfo.title}

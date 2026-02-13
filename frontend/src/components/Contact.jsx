@@ -7,6 +7,7 @@ import { LuInstagram, LuMail } from "react-icons/lu";
 import { BsSnapchat } from "react-icons/bs";
 import { FaLinkedin } from "react-icons/fa";
 import { IoLogoTwitter, IoLogoGithub } from "react-icons/io";
+import { SiMedium } from "react-icons/si";
 import { SiTelegram } from "react-icons/si";
 import { RiThreadsFill } from "react-icons/ri";
 import Alert from "./Alert";
@@ -21,6 +22,7 @@ const socialLinks = [
   { icon: <IoLogoTwitter />, link: "https://x.com/MoinMN5" },
   { icon: <SiTelegram />, link: "https://t.me/im_moin45" },
   { icon: <RiThreadsFill />, link: "https://www.threads.net/@im_moin45" },
+  { icon: <SiMedium />, link: "https://moinn.medium.com" },
 ];
 
 const Contact = () => {
@@ -195,7 +197,12 @@ const Contact = () => {
         </div>
       </motion.section>
 
-      <Alert variant={variantAlert} showAlert={showAlert} message={messageAlert} setShowAlert={setShowAlert} />
+      <Alert
+        variant={variantAlert}
+        showAlert={showAlert}
+        message={messageAlert}
+        setShowAlert={setShowAlert}
+      />
     </>
   );
 };

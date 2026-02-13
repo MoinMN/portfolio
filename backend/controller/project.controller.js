@@ -14,7 +14,7 @@ export const Get = async (req, res) => {
 
 export const Add = async (req, res) => {
   try {
-    const { title, content, technology, githubLink, deployedLink, startDate, endDate } = req.body;
+    const { title, content, technology, githubLink, websiteLink, appLink, startDate, endDate } = req.body;
     const image = req.files?.image;
 
     if (!title || !content || !technology?.length || !githubLink || !image) {
@@ -38,7 +38,8 @@ export const Add = async (req, res) => {
       content,
       technology: technology.split(','),
       githubLink,
-      deployedLink,
+      websiteLink,
+      appLink,
       startDate,
       endDate,
       image: imageSrc.secure_url,
@@ -54,7 +55,7 @@ export const Add = async (req, res) => {
 
 export const Update = async (req, res) => {
   try {
-    const { title, content, technology, githubLink, deployedLink, startDate, endDate, _id } = req.body;
+    const { title, content, technology, githubLink, websiteLink, appLink, startDate, endDate, _id } = req.body;
     const image = req.files?.image;
 
     if (!title || !content || !technology?.length || !githubLink) {
@@ -85,7 +86,8 @@ export const Update = async (req, res) => {
     project.content = content;
     project.technology = technology.split(',');
     project.githubLink = githubLink;
-    project.deployedLink = deployedLink;
+    project.websiteLink = websiteLink;
+    project.appLink = appLink;
     project.startDate = startDate;
     project.endDate = endDate;
     project.image = imageUrl;

@@ -60,7 +60,7 @@ const AdminFooter = () => {
               </span>
             </span>
             <span className='mb-3 mb-md-0 max-md:text-center'>
-              version 2.0.1
+              version 26.2.13
             </span>
           </div>
 
