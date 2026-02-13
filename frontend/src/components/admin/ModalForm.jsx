@@ -213,14 +213,26 @@ const ModalForm = ({
                   />
                 </FloatingLabel>
                 <FloatingLabel
-                  label="Deployed Project Link"
+                  label="Website Link"
                 >
                   <Form.Control
                     className="focus:ring-0"
                     type="url"
-                    name='deployedLink'
-                    placeholder="Deployed Project Link"
-                    value={dataToUpdate.deployedLink || ''}
+                    name='websiteLink'
+                    placeholder="Website Link"
+                    value={dataToUpdate.websiteLink || ''}
+                    onChange={handleChange}
+                  />
+                </FloatingLabel>
+                <FloatingLabel
+                  label="App Link"
+                >
+                  <Form.Control
+                    className="focus:ring-0"
+                    type="url"
+                    name='appLink'
+                    placeholder="App Link"
+                    value={dataToUpdate.appLink || ''}
                     onChange={handleChange}
                   />
                 </FloatingLabel>
