@@ -12,6 +12,7 @@ import { AuthUser } from '../api/auth.api';
 import BASE_URL from '../config/BackendURL';
 import Loading from '../components/admin/Loading';
 import BackgroundVideo from '../assets/bg-admin.mp4';
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -89,6 +90,14 @@ const Login = () => {
         message={messageAlert}
         setShowAlert={setShowAlert}
       />
+
+      <Helmet>
+        <title>Admin Dashboard | Moin Naik</title>
+        <meta
+          name="description"
+          content="Admin control panel to manage portfolio content, skills, projects, and testimonials."
+        />
+      </Helmet>
 
       {isLoading
         ? <Loading />
