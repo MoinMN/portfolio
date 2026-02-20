@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import Confetti from 'react-confetti';
 import { Spinner } from 'react-bootstrap';
-
+import { Helmet } from "react-helmet-async";
 
 const PostTestimonial = () => {
   const [clientData, setClientData] = useState({
@@ -152,6 +152,14 @@ const PostTestimonial = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Submit Testimonial | Moin Naik</title>
+        <meta
+          name="description"
+          content="Share your experience working with Moin Naik."
+        />
+      </Helmet>
+
       <div className="flex flex-col mx-auto h-screen justify-center max-lg:w-full max-lg:px-4 overflow-x-hidden overflow-y-auto bg-black text-white">
         {/* is form submitted */}
         {isSubmitted
